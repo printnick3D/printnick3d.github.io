@@ -54,7 +54,7 @@
         header {
             background: linear-gradient(135deg, var(--dark-accent), var(--dark-bg));
             color: white;
-            padding: 100px 0 80px;
+            padding: 120px 0 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -180,7 +180,7 @@
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 15px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(0, 212, 255, 0.2);
             transform: translateY(-100%);
         }
@@ -194,6 +194,8 @@
             justify-content: center;
             gap: 40px;
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
         
         .nav-links a {
@@ -869,8 +871,21 @@
             }
             
             .nav-links {
-                gap: 20px;
-                font-size: 0.9rem;
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+            
+            .nav-container .container > div {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-container img {
+                height: 30px !important;
+            }
+            
+            .nav-container span {
+                font-size: 1rem !important;
             }
         }
         
@@ -885,12 +900,18 @@
     <!-- Navigation -->
     <nav class="nav-container">
         <div class="container">
-            <ul class="nav-links">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <a href="#home" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="logo.png" alt="PrintNick 3D Logo" style="height: 40px; margin-right: 15px; border-radius: 8px;">
+                    <span style="color: var(--text); font-weight: 600; font-size: 1.2rem;">PrintNick 3D</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#projects">Проекты</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -1060,146 +1081,27 @@
     </div>
 
     <script>
-        // Данные проектов с расширенной информацией
-        const projects = [
-            {
-                id: 1,
-                title: "Блок цилиндров, приставка, компьютер",
-                shortDescription: "Печать на стенд в честь дня рождения информатики. Розовый флуоресцентный PLA.",
-                fullDescription: "Данный проект был выполнен для выставки, посвященной дню рождения информатики. Задача состояла в создании наглядного стенда, демонстрирующего внутреннее устройство компьютерных компонентов.",
-                details: "Процесс включал в себя моделирование деталей, подбор материалов и цветов, а также постобработку для достижения максимальной визуальной привлекательности. Использовался розовый флуоресцентный PLA для создания яркого акцента.",
-                price: "18 300 ₽",
-                mainImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                technologies: ["3D моделирование", "FDM печать", "PLA материал", "Постобработка"],
-                images: [
-                    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 2,
-                title: "Макет здания. Дипломная работа",
-                shortDescription: "Обработка модели в Blender под 3D печать, печать по частям, склейка, шлифовка, шпатлевка, грунтовка.",
-                fullDescription: "Создание детализированного макета исторического здания для дипломной работы по архитектуре. Масштаб 1:100.",
-                details: "Работа включала подготовку 3D модели для печати, разделение на логические части для оптимальной печати, постобработку и сборку. Особое внимание уделялось сохранению мелких архитектурных деталей.",
-                price: "15 000 ₽",
-                mainImage: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                technologies: ["Blender", "FDM печать", "PETG материал", "Склейка", "Шлифовка", "Грунтовка"],
-                images: [
-                    "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 3,
-                title: "Лапша быстрого приготовления. Печать по частям.",
-                shortDescription: "Моделирование и печать по частям под дальнейшую обработку заказчика. Модель 350мм в высоту.",
-                fullDescription: "Создание крупномасштабной модели пачки лапши быстрого приготовления для рекламной кампании.",
-                details: "Из-за большого размера модель была разделена на несколько частей для печати на стандартном 3D принтере. Все соединения спроектированы для простой и надежной сборки.",
-                price: "3 500 ₽",
-                mainImage: "https://images.unsplash.com/photo-1562059395-58b6bef46e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                technologies: ["3D моделирование", "Печать по частям", "PLA материал", "Проектирование соединений"],
-                images: [
-                    "https://images.unsplash.com/photo-1562059395-58b6bef46e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1562059395-58b6bef46e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 4,
-                title: "Кастомный кожух на видеокарту",
-                shortDescription: "Проработка дизайна, моделирование, 3D печать.",
-                fullDescription: "Разработка и изготовление кастомного кожуха для видеокарты в стиле киберпанк.",
-                details: "Процесс включал создание дизайна, согласование с заказчиком, точное моделирование с учетом тепловых зазоров и особенностей охлаждения, а также печать термостойким материалом.",
-                price: "3 000 ₽",
-                mainImage: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                technologies: ["Дизайн", "Точное моделирование", "ABS материал", "Термостойкость"],
-                images: [
-                    "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 5,
-                title: "Шахматы. Дипломный проект.",
-                shortDescription: "Шахматы в стиле на поле 500х500.",
-                fullDescription: "Создание тематического набора шахмат в стиле фэнтези для дипломного проекта по дизайну.",
-                details: "Каждая фигура была индивидуально спроектирована и напечатана с высокой детализацией. Особое внимание уделялось устойчивости фигур и эргономике.",
-                price: "3 600 ₽",
-                mainImage: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                technologies: ["Художественное моделирование", "SLA печать", "Фотополимер", "Постобработка"],
-                images: [
-                    "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ]
-            },
-            {
-                id: 6,
-                title: "Топологическая оптимизация. Дипломный проект.",
-                shortDescription: "Силовой элемент в крыле БПЛА ВВП. Три облегченный варианта с полным циклом обработки и повторного анализа деформаций и напряжений.",
-                fullDescription: "Топологическая оптимизация силового элемента крыла беспилотного летательного аппарата вертикального взлета и посадки.",
-                details: "Проект включал создание трех вариантов конструкции с постепенным уменьшением массы при сохранении прочностных характеристик. Проводился анализ методом конечных элементов.",
-                price: "6 000 ₽",
-                mainImage: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                technologies: ["Топологическая оптимизация", "FEM анализ", "3D моделирование", "Инженерные расчеты"],
-                images: [
-                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
-                ]
-            }
-        ];
+        // Функции для работы с данными из админ панели
+        function loadProjects() {
+            const saved = localStorage.getItem('adminProjects');
+            return saved ? JSON.parse(saved) : [];
+        }
 
-        // Данные услуг
-        const services = [
-            {
-                title: "FDM 3D ПЕЧАТЬ",
-                description: "Расчет по массе печатаемого изделия. PETG - 10р./гр. PLA - 12р./гр. ABS - 15р./гр. TPU - 25р./гр. SBS - 10р./гр. PP - 40р./гр. PC - 45р./гр. PA6, PA66, PA11, PA12 - 45р./гр. А так же их композитные вариации",
-                price: "800 ₽ минимальная стоимость заказа",
-                icon: "fas fa-print"
-            },
-            {
-                title: "Обучение/Консультации CAD/CAM/Blender",
-                description: "Провожу в формате конференции онлайн (Телемост, Anydesk). Обучаю С НУЛЯ: 3D-моделированию (Компас, Blender, Fusion, Geomagic Design X, Quick Surface, Ansys, Coral Draw) 3D-печати (обслуживание, калибровки, параметры печати, Orca Slicer, дефекты, материалы) Проконсультирую и помогу подобрать оборудование под ваши задачи. Кураторство и поддержка на протяжении всего пути освоения технологии.",
-                price: "1 200 ₽ за час",
-                icon: "fas fa-chalkboard-teacher"
-            },
-            {
-                title: "SLA 3D ПЕЧАТЬ",
-                description: "Высокодетализированная фотополимерная печать миниатюр, скульптур, мастер-моделей, ювелирки. Photon Mono 4 Ultra обладает самым маленьким размером пикселей (17 микрон), что позволяет печатать с таким разрешение, которое не могут себе позволить любые другие принтеры. Ультразвук. Сушка. Засветка. WW Resin - 30р./гр. Conjure Rigid Black - 40р./гр А так же не ингибирующие смолы для печати мастер-модели под литье силиконовых форм на платине.",
-                price: "1 000 ₽ минимальная стоимость заказа",
-                icon: "fas fa-microscope"
-            },
-            {
-                title: "3D Моделирование",
-                description: "Технического и художественного характера. Работа с фотографиями, нейросетями, чертежами, набросками. Перечень программ, с которыми работаю: КОМПАС, Blender, Ansys, Fusion, NX, GDX, QS, SolidWorks, AutoCAD и Corel Draw.",
-                price: "800 ₽ за час",
-                icon: "fas fa-cube"
-            },
-            {
-                title: "3D Сканирование",
-                description: "Выездное и студийное сканирование, обработка сканов. Высокоточное сканирование на Creality Raptor мелких и крупных объектов. Стол для сканирования вплоть до 350мм, метки, башни. Сканирование салона автомобиля, шестерней. Контроль геометрии.",
-                price: "3 000 ₽ минимальная стоимость услуги",
-                icon: "fas fa-camera"
-            },
-            {
-                title: "Реверс-инжиниринг",
-                description: "Реверс-инжиниринг: обратное проектирование. Работа со сканами, деталями, имеющихся на руках, сломанными частями, производство которых возможно методами 3Д-печати.",
-                price: "1 000 ₽ за час",
-                icon: "fas fa-code-branch"
-            }
-        ];
+        function loadServices() {
+            const saved = localStorage.getItem('adminServices');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        // Данные проектов с расширенной информацией (резервные, если в админке нет данных)
+        const defaultProjects = [
 
         // Функция для отображения проектов
         function renderProjects() {
+            const projects = loadProjects();
             const projectsGrid = document.querySelector('.projects-grid');
+            
+            // Очищаем контейнер
+            projectsGrid.innerHTML = '';
             
             projects.forEach(project => {
                 const projectCard = document.createElement('div');
@@ -1226,7 +1128,11 @@
 
         // Функция для отображения услуг
         function renderServices() {
+            const services = loadServices();
             const servicesGrid = document.querySelector('.services-grid');
+            
+            // Очищаем контейнер
+            servicesGrid.innerHTML = '';
             
             services.forEach(service => {
                 const serviceCard = document.createElement('div');
@@ -1247,6 +1153,7 @@
 
         // Функция для открытия модального окна с информацией о проекте
         function openProjectModal(projectId) {
+            const projects = loadProjects();
             const project = projects.find(p => p.id === projectId);
             if (!project) return;
             
@@ -1429,8 +1336,165 @@
             });
         }
 
+        // Функция для инициализации данных по умолчанию
+        function initializeDefaultData() {
+            // Инициализируем проекты по умолчанию, если в админке нет данных
+            const savedProjects = localStorage.getItem('adminProjects');
+            if (!savedProjects) {
+                const defaultProjects = [
+                    {
+                        id: 1,
+                        title: "Блок цилиндров, приставка, компьютер",
+                        shortDescription: "Печать на стенд в честь дня рождения информатики. Розовый флуоресцентный PLA.",
+                        fullDescription: "Данный проект был выполнен для выставки, посвященной дню рождения информатики. Задача состояла в создании наглядного стенда, демонстрирующего внутреннее устройство компьютерных компонентов.",
+                        details: "Процесс включал в себя моделирование деталей, подбор материалов и цветов, а также постобработку для достижения максимальной визуальной привлекательности. Использовался розовый флуоресцентный PLA для создания яркого акцента.",
+                        price: "18 300 ₽",
+                        mainImage: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                        technologies: ["3D моделирование", "FDM печать", "PLA материал", "Постобработка"],
+                        images: [
+                            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: "Макет здания. Дипломная работа",
+                        shortDescription: "Обработка модели в Blender под 3D печать, печать по частям, склейка, шлифовка, шпатлевка, грунтовка.",
+                        fullDescription: "Создание детализированного макета исторического здания для дипломной работы по архитектуре. Масштаб 1:100.",
+                        details: "Работа включала подготовку 3D модели для печати, разделение на логические части для оптимальной печати, постобработку и сборку. Особое внимание уделялось сохранению мелких архитектурных деталей.",
+                        price: "15 000 ₽",
+                        mainImage: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                        technologies: ["Blender", "FDM печать", "PETG материал", "Склейка", "Шлифовка", "Грунтовка"],
+                        images: [
+                            "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: "Лапша быстрого приготовления. Печать по частям.",
+                        shortDescription: "Моделирование и печать по частям под дальнейшую обработку заказчика. Модель 350мм в высоту.",
+                        fullDescription: "Создание крупномасштабной модели пачки лапши быстрого приготовления для рекламной кампании.",
+                        details: "Из-за большого размера модель была разделена на несколько частей для печати на стандартном 3D принтере. Все соединения спроектированы для простой и надежной сборки.",
+                        price: "3 500 ₽",
+                        mainImage: "https://images.unsplash.com/photo-1562059395-58b6bef46e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                        technologies: ["3D моделирование", "Печать по частям", "PLA материал", "Проектирование соединений"],
+                        images: [
+                            "https://images.unsplash.com/photo-1562059395-58b6bef46e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1562059395-58b6bef46e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        ]
+                    },
+                    {
+                        id: 4,
+                        title: "Кастомный кожух на видеокарту",
+                        shortDescription: "Проработка дизайна, моделирование, 3D печать.",
+                        fullDescription: "Разработка и изготовление кастомного кожуха для видеокарты в стиле киберпанк.",
+                        details: "Процесс включал создание дизайна, согласование с заказчиком, точное моделирование с учетом тепловых зазоров и особенностей охлаждения, а также печать термостойким материалом.",
+                        price: "3 000 ₽",
+                        mainImage: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                        technologies: ["Дизайн", "Точное моделирование", "ABS материал", "Термостойкость"],
+                        images: [
+                            "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        ]
+                    },
+                    {
+                        id: 5,
+                        title: "Шахматы. Дипломный проект.",
+                        shortDescription: "Шахматы в стиле на поле 500х500.",
+                        fullDescription: "Создание тематического набора шахмат в стиле фэнтези для дипломного проекта по дизайну.",
+                        details: "Каждая фигура была индивидуально спроектирована и напечатана с высокой детализацией. Особое внимание уделялось устойчивости фигур и эргономике.",
+                        price: "3 600 ₽",
+                        mainImage: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                        technologies: ["Художественное моделирование", "SLA печать", "Фотополимер", "Постобработка"],
+                        images: [
+                            "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        ]
+                    },
+                    {
+                        id: 6,
+                        title: "Топологическая оптимизация. Дипломный проект.",
+                        shortDescription: "Силовой элемент в крыле БПЛА ВВП. Три облегченный варианта с полным циклом обработки и повторного анализа деформаций и напряжений.",
+                        fullDescription: "Топологическая оптимизация силового элемента крыла беспилотного летательного аппарата вертикального взлета и посадки.",
+                        details: "Проект включал создание трех вариантов конструкции с постепенным уменьшением массы при сохранении прочностных характеристик. Проводился анализ методом конечных элементов.",
+                        price: "6 000 ₽",
+                        mainImage: "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                        technologies: ["Топологическая оптимизация", "FEM анализ", "3D моделирование", "Инженерные расчеты"],
+                        images: [
+                            "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80",
+                            "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                        ]
+                    }
+                ];
+                localStorage.setItem('adminProjects', JSON.stringify(defaultProjects));
+            }
+
+            // Инициализируем услуги по умолчанию, если в админке нет данных
+            const savedServices = localStorage.getItem('adminServices');
+            if (!savedServices) {
+                const defaultServices = [
+                    {
+                        id: 1,
+                        title: "FDM 3D ПЕЧАТЬ",
+                        description: "Расчет по массе печатаемого изделия. PETG - 10р./гр. PLA - 12р./гр. ABS - 15р./гр. TPU - 25р./гр. SBS - 10р./гр. PP - 40р./гр. PC - 45р./гр. PA6, PA66, PA11, PA12 - 45р./гр. А так же их композитные вариации",
+                        price: "800 ₽ минимальная стоимость заказа",
+                        icon: "fas fa-print"
+                    },
+                    {
+                        id: 2,
+                        title: "Обучение/Консультации CAD/CAM/Blender",
+                        description: "Провожу в формате конференции онлайн (Телемост, Anydesk). Обучаю С НУЛЯ: 3D-моделированию (Компас, Blender, Fusion, Geomagic Design X, Quick Surface, Ansys, Coral Draw) 3D-печати (обслуживание, калибровки, параметры печати, Orca Slicer, дефекты, материалы) Проконсультирую и помогу подобрать оборудование под ваши задачи. Кураторство и поддержка на протяжении всего пути освоения технологии.",
+                        price: "1 200 ₽ за час",
+                        icon: "fas fa-chalkboard-teacher"
+                    },
+                    {
+                        id: 3,
+                        title: "SLA 3D ПЕЧАТЬ",
+                        description: "Высокодетализированная фотополимерная печать миниатюр, скульптур, мастер-моделей, ювелирки. Photon Mono 4 Ultra обладает самым маленьким размером пикселей (17 микрон), что позволяет печатать с таким разрешение, которое не могут себе позволить любые другие принтеры. Ультразвук. Сушка. Засветка. WW Resin - 30р./гр. Conjure Rigid Black - 40р./гр А так же не ингибирующие смолы для печати мастер-модели под литье силиконовых форм на платине.",
+                        price: "1 000 ₽ минимальная стоимость заказа",
+                        icon: "fas fa-microscope"
+                    },
+                    {
+                        id: 4,
+                        title: "3D Моделирование",
+                        description: "Технического и художественного характера. Работа с фотографиями, нейросетями, чертежами, набросками. Перечень программ, с которыми работаю: КОМПАС, Blender, Ansys, Fusion, NX, GDX, QS, SolidWorks, AutoCAD и Corel Draw.",
+                        price: "800 ₽ за час",
+                        icon: "fas fa-cube"
+                    },
+                    {
+                        id: 5,
+                        title: "3D Сканирование",
+                        description: "Выездное и студийное сканирование, обработка сканов. Высокоточное сканирование на Creality Raptor мелких и крупных объектов. Стол для сканирования вплоть до 350мм, метки, башни. Сканирование салона автомобиля, шестерней. Контроль геометрии.",
+                        price: "3 000 ₽ минимальная стоимость услуги",
+                        icon: "fas fa-camera"
+                    },
+                    {
+                        id: 6,
+                        title: "Реверс-инжиниринг",
+                        description: "Реверс-инжиниринг: обратное проектирование. Работа со сканами, деталями, имеющихся на руках, сломанными частями, производство которых возможно методами 3Д-печати.",
+                        price: "1 000 ₽ за час",
+                        icon: "fas fa-code-branch"
+                    }
+                ];
+                localStorage.setItem('adminServices', JSON.stringify(defaultServices));
+            }
+        }
+
         // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', () => {
+            // Инициализируем данные по умолчанию, если нужно
+            initializeDefaultData();
+            
             renderProjects();
             renderServices();
             smoothScroll();
