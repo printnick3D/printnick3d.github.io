@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Калькулятор стоимости 3D-печати</title>
+
+  <!-- SEO -->
+  <meta name="description"
+        content="Онлайн калькулятор стоимости 3D-печати: PLA, PETG, ABS. Быстрый расчёт цены печати деталей.">
+  <meta name="keywords"
+        content="3D печать, калькулятор 3D печати, стоимость 3D печати, PLA, PETG, ABS">
+  <meta name="robots" content="index, follow">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="Калькулятор 3D-печати">
+  <meta property="og:description" content="Рассчитайте стоимость 3D-печати онлайн">
+  <meta property="og:type" content="website">
+
+  <!-- UI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-zinc-900 text-zinc-100 min-h-screen p-4">
+
+<!-- Навигация -->
+<div class="max-w-7xl mx-auto mb-4">
+  <a href="./index.html"
+     class="inline-flex items-center text-sm text-zinc-400 hover:text-zinc-200">
+    ← На главную
+  </a>
+</div>
+
+<!-- Калькулятор -->
+<div class="flex justify-center">
+  <div class="bg-zinc-800 shadow-2xl rounded-xl p-6 w-full max-w-4xl">
+
+    <h1 class="text-2xl font-semibold mb-6 text-center">
+      <i class="fas fa-cube mr-2"></i>
+      Калькулятор стоимости 3D-печати
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Левая панель -->
+      <div class="space-y-4">
+
+        <div>
+          <label class="text-sm text-zinc-400 flex items-center">
+            <i class="fas fa-box-open mr-2"></i>Материал
+          </label>
+          <select id="material"
+                  class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2 mt-1"></select>
+        </div>
+
+        <div>
+          <label class="text-sm text-zinc-400 flex items-center">
+            <i class="fas fa-palette mr-2"></i>Цвет
+          </label>
+          <input id="color"
+                 type="text"
+                 class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2 mt-1"
+                 disabled>
+        </div>
+
+        <div>
+          <label class="text-sm text-zinc-400 flex items-center">
+            <i class="fas fa-weight-hanging mr-2"></i>Вес детали (г)
+          </label>
+          <input id="weight" type="number" min="0" step="0.1"
+                 class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2 mt-1">
+        </div>
+
+        <div>
+          <label class="text-sm text-zinc-400 flex items-center">
+            <i class="fas fa-clock mr-2"></i>Время печати (ч)
+          </label>
+          <input id="time" type="number" min="0" step="0.1"
+                 class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2 mt-1">
+        </div>
+
+        <div>
+          <label class="text-sm text-zinc-400 flex items-center">
+            <i class="fas fa-star mr-2"></i>Коэффициент сложности
+          </label>
+          <select id="complexity"
+                  class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2 mt-1">
+            <option value="1">Обычная (1.0)</option>
+            <option value="1.2">Средняя (1.2)</option>
+            <option value="1.5">Сложная (1.5)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="text-sm text-zinc-400 flex items-center">
+            <i class="fas fa-tools mr-2"></i>Стоимость печати (руб/ч)
+          </label>
+          <input id="printCost" type="number" min="0" step="10" value="50"
+                 class="w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2 mt-1">
+        </div>
+
+        <!-- Дополнительные услуги -->
+        <div class="border-t border-zinc-700 pt-4">
+          <h3 class="text-sm font-medium text-zinc-300 mb-3 flex items-center">
+            <i class="fas fa-plus-circle mr-2"></i>Дополнительные услуги
+          </h3>
+
+          <!-- Моделирование -->
+          <div class="mb-3">
+            <label class="flex items-center space-x-2 text-sm text-zinc-400">
+              <input type="checkbox" id="useModeling" checked>
+              <span>Моделирование</span>
+            </label>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <input id="modelingCost" type="number" value="300"
+                     class="bg-zinc-900 border border-zinc-700 rounded-lg p-2">
+              <input id="modelingTime" type="number" value="1" step="0.5"
+                     class="bg-zinc-900 border border-zinc-700 rounded-lg p-2">
+            </div>
+          </div>
+
+          <!-- Постобработка -->
+          <div class="mb-3">
+            <label class="flex items-center space-x-2 text-sm text-zinc-400">
+              <input type="checkbox" id="usePostprocess" checked>
+              <span>Постобработка</span>
+            </label>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <input id="postprocessCost" type="number" value="100"
+                     class="bg-zinc-900 border border-zinc-700 rounded-lg p-2">
+              <input id="postprocessTime" type="number" value="1" step="0.5"
+                     class="bg-zinc-900 border border-zinc-700 rounded-lg p-2">
+            </div>
+          </div>
+
+          <!-- Упаковка -->
+          <div>
+            <label class="flex items-center space-x-2 text-sm text-zinc-400">
+              <input type="checkbox" id="usePackaging" checked>
+              <span>Упаковка</span>
+            </label>
+            <input id="packagingCost" type="number" value="20"
+                   class="mt-2 w-full bg-zinc-900 border border-zinc-700 rounded-lg p-2">
+          </div>
+        </div>
+
+        <button onclick="calculate()"
+                class="w-full bg-emerald-600 hover:bg-emerald-500 transition py-3 rounded-lg font-medium">
+          <i class="fas fa-calculator mr-2"></i>Рассчитать
+        </button>
+
+        <button onclick="saveCalculation()"
+                class="w-full bg-blue-600 hover:bg-blue-500 transition py-3 rounded-lg font-medium">
+          <i class="fas fa-save mr-2"></i>Сохранить расчёт
+        </button>
+      </div>
+
+      <!-- Правая панель -->
+      <div class="bg-zinc-900 rounded-lg p-4">
+        <h2 class="text-lg font-medium mb-3 flex items-center">
+          <i class="fas fa-receipt mr-2"></i>Расчёт
+        </h2>
+
+        <table class="w-full text-sm">
+          <tbody id="breakdown"
+                 class="divide-y divide-zinc-700"></tbody>
+        </table>
+
+        <div id="total"
+             class="mt-4 text-xl font-semibold text-right">
+          Итого: 0 ₽
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Футер -->
+    <div class="mt-6 pt-4 border-t border-zinc-700 text-center text-xs text-zinc-500">
+      Все расчёты выполняются в браузере
+    </div>
+
+  </div>
+</div>
+
+<!-- JS -->
+<script type="module" src="./js/calculator.main.js"></script>
+
+</body>
+</html>
